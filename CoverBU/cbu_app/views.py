@@ -1,12 +1,11 @@
-from django.shortcuts import render
 from rest_framework import generics
-from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 
 from cbu_app.models import CBU
 from cbu_app.serializers import CBUSerializer
 
 
+# View for creation new CBU record by authenticated user
 class CreateCBU(generics.CreateAPIView):
 
     serializer_class = CBUSerializer
@@ -17,6 +16,7 @@ class CreateCBU(generics.CreateAPIView):
         serializer.save()
 
 
+# View of user's CBUs
 class UserOwnerCBUList(generics.ListAPIView):
 
     serializer_class = CBUSerializer
